@@ -21,14 +21,14 @@ namespace ReportApp.Models
                     {
                         Name = "Dustin Dyckmanns",
                         Signature = "D. Dyckmanns",
-                        JoinedAt = DateTime.Parse("2020-01-08"),
+                        JoinedAt = DateTime.Parse("2020-08-01"),
                         IsTrainee = true
                     },
                     new Member
                     {
                         Name = "Paolo Viola",
                         Signature = "P. Viola",
-                        JoinedAt = DateTime.Parse("2022-01-08"),
+                        JoinedAt = DateTime.Parse("2022-08-01"),
                         IsTrainee = true
                     }
                     );
