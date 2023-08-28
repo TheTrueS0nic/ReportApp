@@ -1,0 +1,38 @@
+﻿using Microsoft.EntityFrameworkCore;
+using ReportApp.Data;
+
+namespace ReportApp.Models
+{
+    public class SeedData
+    {
+        public static void Initialize(IServiceProvider serviceProvider)
+        {
+            using (var context = new ReportAppContext(
+                serviceProvider.GetRequiredService<
+                    DbContextOptions<ReportAppContext>>()))
+            {
+                // Look for any movies.
+                if (context.Member.Any())
+                {
+                    return;   // DB has been seeded
+                }
+                context.Member.AddRange(
+                    new Member
+                    {
+                        Name = "Dustin Dyckmanns",
+                        Signature = "D. Dyckmanns",
+                        JoinedAt = DateTime.Parse("2020-01-08"),
+                        IsTrainee = true
+                    },
+                    new Member
+                    {
+                        Name = "Paolo Viola",
+                        Signature = "P. Viola",
+                        JoinedAt = DateTime.Parse("2022-01-08"),
+                        IsTrainee = true
+                    }
+                    );
+            }
+        }
+    }
+}
