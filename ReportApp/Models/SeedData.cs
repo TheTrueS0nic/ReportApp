@@ -11,7 +11,7 @@ namespace ReportApp.Models
                 serviceProvider.GetRequiredService<
                     DbContextOptions<ReportAppContext>>()))
             {
-                // Look for any movies.
+                // Look for any member.
                 if (context.Member.Any())
                 {
                     return;   // DB has been seeded
@@ -32,6 +32,7 @@ namespace ReportApp.Models
                         IsTrainee = true
                     }
                     );
+                context.SaveChanges();
             }
         }
     }
