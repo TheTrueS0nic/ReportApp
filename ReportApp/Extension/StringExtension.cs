@@ -2,11 +2,11 @@
 {
     public static class StringExtention
     {
-        public static string ContentPreview(this string text)
+        public static string TrimText(this string text, int size = 20)
         {
-            if (text.Length > 20)
+            if (text.Length > size)
             {
-                text = text.Substring(0, 20);
+                text = text.Substring(0, size);
                 return text;
             }
             return text;
