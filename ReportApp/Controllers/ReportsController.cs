@@ -4,7 +4,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using ReportApp.Data;
 using ReportApp.Models;
 
@@ -22,20 +24,20 @@ namespace ReportApp.Controllers
         // GET: Reports
         public async Task<IActionResult> Index()
         {
-              return _context.Member != null ? 
-                          View(await _context.Member.ToListAsync()) :
+              return _context.Report != null ?
+                          View(await _context.Report.ToListAsync()) :
                           Problem("Entity set 'ReportAppContext.Report'  is null.");
         }
 
         // GET: Reports/Details/5
         public async Task<IActionResult> Details(int? id)
         {
-            if (id == null || _context.Member == null)
+            if (id == null || _context.Report == null)
             {
                 return NotFound();
             }
 
-            var report = await _context.Member
+            var report = await _context.Report
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (report == null)
             {
@@ -70,12 +72,12 @@ namespace ReportApp.Controllers
         // GET: Reports/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
-            if (id == null || _context.Member == null)
+            if (id == null || _context.Report == null)
             {
                 return NotFound();
             }
 
-            var report = await _context.Member.FindAsync(id);
+            var report = await _context.Report.FindAsync(id);
             if (report == null)
             {
                 return NotFound();
@@ -121,12 +123,12 @@ namespace ReportApp.Controllers
         // GET: Reports/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
-            if (id == null || _context.Member == null)
+            if (id == null || _context.Report == null)
             {
                 return NotFound();
             }
 
-            var report = await _context.Member
+            var report = await _context.Report
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (report == null)
             {
@@ -141,14 +143,14 @@ namespace ReportApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            if (_context.Member == null)
+            if (_context.Report == null)
             {
                 return Problem("Entity set 'ReportAppContext.Report'  is null.");
             }
-            var report = await _context.Member.FindAsync(id);
+            var report = await _context.Report.FindAsync(id);
             if (report != null)
             {
-                _context.Member.Remove(report);
+                _context.Report.Remove(report);
             }
             
             await _context.SaveChangesAsync();
@@ -157,7 +159,7 @@ namespace ReportApp.Controllers
 
         private bool ReportExists(int id)
         {
-          return (_context.Member?.Any(e => e.Id == id)).GetValueOrDefault();
+          return (_context.Report?.Any(e => e.Id == id)).GetValueOrDefault();
         }
     }
 }

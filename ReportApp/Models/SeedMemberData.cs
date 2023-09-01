@@ -3,7 +3,7 @@ using ReportApp.Data;
 
 namespace ReportApp.Models
 {
-    public class SeedData
+    public class SeedMemberData
     {
         public static void Initialize(IServiceProvider serviceProvider)
         {
