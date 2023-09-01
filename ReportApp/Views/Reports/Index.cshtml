@@ -13,17 +13,17 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
+            <th hidden>
                 @Html.DisplayNameFor(model => model.OriginatorId)
             </th>
-            <th>
+            <th hidden>
                 @Html.DisplayNameFor(model => model.ReviewerId)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Content)
+                @Html.DisplayNameFor(model => model.CreationDate)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CreationDate)
+                @Html.DisplayNameFor(model => model.Content)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.ModificationDate)
@@ -40,19 +40,20 @@
     <tbody>
 @foreach (var item in Model) {
         <tr>
-            <td>
+            <td hidden>
                 @Html.DisplayFor(modelItem => item.OriginatorId)
             </td>
-            <td>
+            <td hidden>
                 @Html.DisplayFor(modelItem => item.ReviewerId)
+            </td>
+            <td>
+                    @Html.DisplayFor(modelItem => item.CreationDate)
             </td>
             <td>
                 @item.Content.TrimText(50)
                 @* @Html.DisplayFor(modelItem => item.Content) *@
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CreationDate)
-            </td>
+           
             <td>
                 @Html.DisplayFor(modelItem => item.ModificationDate)
             </td>
